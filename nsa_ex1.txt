@@ -1,0 +1,96 @@
+
+1.Create the above directory tree and enter necessary data into the files.Then perform the
+following operations using linux utilities.
+
+developer@ccfl6-pc37:~$ mkdir -p project34/Payroll project34/Sales project34/Sales/RegionA project34/Sales/RegionB
+developer@ccfl6-pc37:~$ cd project34
+developer@ccfl6-pc37:~/project34$ cd Payroll
+developer@ccfl6-pc37:~/project34/Payroll$ touch Checks.dat Pay2.dat
+developer@ccfl6-pc37:~/project34/Payroll$ cd ..
+developer@ccfl6-pc37:~/project34$ cd Sales
+developer@ccfl6-pc37:~/project34/Sales$ touch East.dat
+developer@ccfl6-pc37:~/project34$ cd Sales
+developer@ccfl6-pc37:~/project34/Sales$ cd RegionB
+developer@ccfl6-pc37:~/project34/Sales/RegionB$ touch west1.dat west2.dat west3.dat
+
+a) Copy pay2.dat to directories RegionA and RegionB.
+
+
+developer@ccfl6-pc37:~/project34/Sales/RegionB$ cd ../../
+developer@ccfl6-pc37:~/project34$ cd Payroll
+developer@ccfl6-pc37:~/project34/Payroll$ cp Pay2.dat ../Sales/RegionA
+developer@ccfl6-pc37:~/project34/Payroll$  cp Pay2.dat ../Sales/RegionB
+developer@ccfl6-pc37:~/project34/Payroll$ cd ..
+developer@ccfl6-pc37:~/project34$ cd Sales
+developer@ccfl6-pc37:~/project34/Sales$ cd RegionA
+developer@ccfl6-pc37:~/project34/Sales/RegionA$ ls
+Pay2.dat
+developer@ccfl6-pc37:~/project34/Sales/RegionA$ touch East.dat
+developer@ccfl6-pc37:~/project34/Sales/RegionA$ ls
+East.dat  Pay2.dat
+developer@ccfl6-pc37:~/project34/Sales/RegionA$ cd ..
+developer@ccfl6-pc37:~/project34/Sales$ cd RegionB
+developer@ccfl6-pc37:~/project34/Sales/RegionB$ ls
+Pay2.dat  west1.dat  west2.dat  west3.dat
+
+b) Save the file west3.dat to RegionA under the name East1.dat
+
+
+developer@ccfl6-pc37:~$ cp project34/Sales/RegionB/west3.dat project34/Sales/RegionA/East1.dat
+developer@ccfl6-pc37:~$ cd project34
+developer@ccfl6-pc37:~/project34$ cd Sales
+developer@ccfl6-pc37:~/project34/Sales$ cd RegionA
+developer@ccfl6-pc37:~/project34/Sales/RegionA$ ls
+East1.dat  East.dat  Pay2.dat
+
+c) Combine the contents of Checks.dat and pay2.dat into a new file payment.dat
+under payroll.
+
+
+developer@ccfl6-pc37:~/project34/Sales/RegionA$ cd ..
+developer@ccfl6-pc37:~/project34$ cat Payroll/Checks.dat Payroll/Pay2.dat > Payroll/Payment.dat
+developer@ccfl6-pc37:~/project34$ cd Payroll
+developer@ccfl6-pc37:~/project34/Payroll$ ls
+Checks.dat  Pay2.dat  Payment.dat
+
+d)Get the count of the number of ordinary files in Sales directory.
+
+
+developer@ccfl6-pc37:~$ find project34/Sales -type f | wc -l
+8
+
+e)Find the list all *.dat files in Project34 directory
+
+
+developer@ccfl6-pc37:~$ find project34 -type f -name "*.dat"
+
+project34/Payroll/Checks.dat
+project34/Payroll/Payment.dat
+project34/Payroll/Pay2.dat
+project34/Sales/RegionB/west3.dat
+project34/Sales/RegionB/west1.dat
+project34/Sales/RegionB/west2.dat
+project34/Sales/RegionB/Pay2.dat
+project34/Sales/RegionA/East1.dat
+project34/Sales/RegionA/East.dat
+project34/Sales/RegionA/Pay2.dat
+
+
+f)Sort pay2.dat in the descending order of payment amount.
+
+
+developer@ccfl6-pc37:~$ sort -k 2 -nr project34/Payroll/Pay2.dat
+Arun 59088
+Anu 59000
+Mariya 38880
+Varun 29000
+
+h)Remove RegionB directory and its contents in one shot.
+
+
+developer@ccfl6-pc37:~$ rm -r project34/Sales/RegionB
+developer@ccfl6-pc37:~$ ls project34/Sales
+East.dat  
+ 
+
+
